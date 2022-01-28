@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db.models import fields
 from django.urls.base import reverse
-from .models import Perfil,Categoria, Noticia, Visualizacao, Comentario
+from .models import Perfil, Categoria, Noticia, Visualizacao, Comentario
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
