@@ -13,7 +13,7 @@ class PerfilCreate(CreateView):
 
 class PerfilUpdate(UpdateView):
     model = Perfil
-    fields = ['nome','cpf', 'data_nasc', 'bio']
+    fields = ['nome', 'bio']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('index') # Redireciona o usuário para "index"
 
