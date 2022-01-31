@@ -1,59 +1,42 @@
 {% load static %}
 
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site</title>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> IFPR News </title>
 
-    <!--CSS externo -->
-    <link rel="stylesheet" href="{% static 'estilo.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="shortcut icon" href = "{% static 'img/logo.jpg' %}">
+        <!--CSS externo -->
+        <link rel="stylesheet" href="{% static 'estilo.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="shortcut icon" href = "{% static 'img/logo.jpg' %}">
 
-     <!--CSS interno -->
-     <style>
-      
-        
-            p.solid {border-style: solid;}
-     </style>
-</head>
-<body>
-    <div class="container-fluid">
-   
-     <h2 class="text-primary border-bottom pb-2 pt-4">
-         Pagina Inicial do Site
-        </h2>
-        <div class="row bg-info p-3 mb-2">
-            <div class="col-3">
-                Primeira parte
+        <!--CSS interno -->
+        <style>
+            p.solid { border-style: solid; }
+        </style>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <h2 class="text-primary border-bottom pb-2 pt-4"> Pagina Inicial </h2>
+            <div class="row bg-info p-3 mb-2">
+                <div class="col-3"> Primeira parte </div>
+                <div class="col-4"> Segunda parte </div>
+                <div class="col-3"> Terceira parte </div>
             </div>
-            <div class="col-4">
-                Segunda parte
-            </div>
-            <div class="col-3">
-                Terceira parte
-            </div>
+            <h4> Descrição do Projeto </h4>
+            <p class="solid">  </p>
+            <h3>Diagrama Casos de Uso</h3>
+            <img src="{% static 'img/Diagrama-de-caso-de-uso.jpeg'%}" width="700" alt="">
+            <h3>Diagrama Classes</h3>
+            <img src="{% static 'img/Diagrama-De-Classes.jpeg'%}" width="700" alt="">
+            <br>
+            <br>
+            <a href="#" class="btn btn-primary">IFPR</a>
+            <a href="#" class="btn btn-primary">Cronos</a>
         </div>
-      <h4>Descrição do Projeto</h4>
-      <p class="solid">Os estudantes do 4° Informática do IFPR campus Paranavaí, Barbara Ferbonink Barbarelli do RA. , Iago Meira Gonçalves do RA. e João Felipe dos Santos do RA.20183029507 tiveram o interesse em desenvolver um projeto cujo o intuito é fazer um site de notícias do Instituto Federal do Paraná (IFPR), campus Paranavaí, para os alunos do campus receberem informações sobre eventos que aconteceram, dias de manutenção de plataformas, dias de recessos acadêmicos, etc. as pessoas que terão acesso para enviarem as notícias são os  servidores da instituição e alunos do grêmio estudantil do campus, sendo assim manterá os alunos informados e também contribuirá para com os estudantes da instituição mantendo-os antenados, a ideia do site também é para que os alunos possam fazer inscrições para os eventos ou situações que são necessárias o cadastro do aluno para que recebam horas e sendo assim os alunos também podem receber os seus certificados sem precisar pagar, um outro planejamento é para que os alunos possam comentar sobre as informações apresentadas, caso tenha dúvidas, ex. quando acontecerá tal evento, se estudantes de outros cursos poderão participar, etc., mas caso ocorra um comentário indesejado ou malicioso ele pode ser excluído pelos administradores..</p>
-      <h3>Diagrama de casos de Uso</h3>
-       <img src="{% static 'img/Diagrama-de-caso-de-uso.jpeg'%}" width="700" alt="">
-
-      <h3>Diagrama de casos de Classes</h3>
-      <img src="{% static 'img/Diagrama-De-Classes.jpeg'%}" width="700" alt="">
-
-      <br> <br>
-
-      <a href="#" class="btn btn-primary">IFPR</a>
-      <a href="#" class="btn btn-primary">Cronos</a>
-
-  </div>
-
-
-
-</body>
-</html
+    </body>
+</html>
