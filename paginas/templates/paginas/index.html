@@ -1,24 +1,12 @@
+{% extends 'paginas/modelo.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> IFPR News </title>
 
-        <!--CSS externo -->
-        <link rel="stylesheet" href="{% static 'estilo.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-        <link rel="shortcut icon" href = "{% static 'img/logo.jpg' %}">
 
-        <!--CSS interno -->
-        <style> p.solid { border-style: solid; } </style>
-    </head>
 
-    <body>
-        <div class="container-fluid">
+    {% block conteudo %}
+
             <h2 class="text-primary border-bottom pb-2 pt-4"> Pagina Inicial </h2>
             <div class="row bg-info p-3 mb-2">
                 <div class="col-3"> Primeira parte </div>
@@ -28,13 +16,13 @@
             <h4> Descrição do Projeto </h4>
             <p class="solid">  </p>
             <h3>Diagrama Casos de Uso</h3>
-            <img src="{% static 'img/Diagrama-de-caso-de-uso.jpeg'%}" width="700" alt="">
+            <img src="{% static 'img/Diagrama-de-caso-de-uso.jpg'%}" width="700" alt="">
             <h3>Diagrama Classes</h3>
-            <img src="{% static 'img/Diagrama-De-Classes.jpeg'%}" width="700" alt="">
+            <img src="{% static 'img/Diagrama-De-Classes.jpg'%}" width="700" alt="">
             <br>
             <br>
             <a href="#" class="btn btn-primary">IFPR</a>
             <a href="#" class="btn btn-primary">Cronos</a>
-        </div>
-    </body>
-</html>
+
+    {% endblock %}
+      
