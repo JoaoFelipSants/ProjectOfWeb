@@ -1,5 +1,6 @@
 
 
+from tkinter.ttk import Button
 from .models import Perfil, Categoria, Noticia, Visualizacao, Comentario
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
@@ -9,13 +10,15 @@ class PerfilCreate(CreateView):
     model = Perfil
     fields = ['nome','cpf', 'data_nasc', 'bio']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar/perfil') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
+           
+
 
 class PerfilUpdate(UpdateView):
     model = Perfil
     fields = ['nome', 'bio']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar/perfil') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
 
     
 class PerfilList(ListView):
@@ -26,13 +29,13 @@ class CategoriaCreate(CreateView):
     model = Categoria
     fields = ['nome']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar/categoria') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-categoria') # Redireciona o usuário para "index"
 
 class CategoriaUpdate(UpdateView):
     model = Categoria
     fields = ['nome']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar/categoria') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-categoria') # Redireciona o usuário para "index"
 
     
 class CategoriaList(ListView):
@@ -41,15 +44,15 @@ class CategoriaList(ListView):
 
 class NoticiaCreate(CreateView):
     model = Noticia
-    fields = ['titulo, tags, conteudo, visualizacao, categoria']
+    fields = ['titulo', 'tags', 'conteudo', 'vizualizacao', 'categoria']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar/noticia') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-noticia') # Redireciona o usuário para "index"
 
 class NoticiaUpdate(UpdateView):
     model = Noticia
-    fields = ['titulo, tags, conteudo, visualizacao, categoria']
+    fields = ['titulo', 'tags', 'conteudo', 'vizualizacao', 'categoria']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar/noticia') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-noticia') # Redireciona o usuário para "index"
 
 
 class NoticiaList(ListView):
