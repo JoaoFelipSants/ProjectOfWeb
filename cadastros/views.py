@@ -1,5 +1,6 @@
 
 
+from pyexpat import model
 from tkinter.ttk import Button
 from .models import Perfil, Categoria, Noticia, Visualizacao, Comentario
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -25,6 +26,12 @@ class PerfilList(ListView):
     model = Perfil
     template_name = 'cadastros/listas/perfil.html'
 
+class PerfilDelete(DeleteView):
+    model = Perfil
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy ('listar-perfil')
+
+
 class CategoriaCreate(CreateView):
     model = Categoria
     fields = ['nome']
@@ -42,6 +49,12 @@ class CategoriaList(ListView):
     model = Categoria
     template_name = 'cadastros/listas/categoria.html'
 
+
+class CategoriaDelete(DeleteView):
+    model = Categoria
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy ('listar-categoria')
+
 class NoticiaCreate(CreateView):
     model = Noticia
     fields = ['titulo', 'tags', 'conteudo', 'vizualizacao', 'categoria']
@@ -58,3 +71,9 @@ class NoticiaUpdate(UpdateView):
 class NoticiaList(ListView):
     model = Noticia
     template_name = 'cadastros/listas/noticia.html'
+
+    
+class NoticiaDelete(DeleteView):
+    model = Noticia
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy ('listar-noticia')
