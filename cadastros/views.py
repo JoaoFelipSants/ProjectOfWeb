@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 
 class PerfilCreate(CreateView):
     model = Perfil
-    fields = ['nome','cpf', 'data_nasc', 'bio']
+    fields = ['nome','cpf', 'data_nasc', 'bio', 'usuario']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
            
