@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cadastros.apps.CadastrosConfig',
      'crispy_forms',
      'crispy_bootstrap5',
+     'usuarios.apps.UsuariosConfig',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -128,6 +129,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
 
 
 # Default primary key field type
