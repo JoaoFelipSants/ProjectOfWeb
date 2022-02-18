@@ -12,22 +12,21 @@ from django.urls import reverse_lazy
 class PerfilCreate(CreateView):
     login_url = reverse_lazy('login')
     model = Perfil
-    fields = ['nome', 'cpf', 'data_nasc', 'bio', 'usuario']
+    fields = ['nome', 'cpf', 'data_nasc', 'bio']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('inicio') # Redireciona o usuário para "index"
            
 
 class PerfilUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     model = Perfil
-    fields = ['nome', 'bio']
+    fields = ['nome', 'bio', 'senha']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
 
     
-class PerfilList(LoginRequiredMixin, GroupRequiredMixin, ListView):
+class PerfilList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
-    group_required = u"admin"
     model = Perfil
     template_name = 'cadastros/listas/perfil.html'
 
@@ -55,9 +54,8 @@ class CategoriaUpdate(LoginRequiredMixin, GroupRequiredMixin, UpdateView):
     success_url = reverse_lazy ('listar-categoria') # Redireciona o usuário para "index"
 
     
-class CategoriaList(LoginRequiredMixin, GroupRequiredMixin, ListView):
+class CategoriaList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
-    group_required = u"admin"
     model = Categoria
     template_name = 'cadastros/listas/categoria.html'
 

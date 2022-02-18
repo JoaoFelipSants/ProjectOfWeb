@@ -3,11 +3,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Perfil (models.Model):
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50, null=False)
+    # senha = models.CharField(min_lenght=6, max_lenght=25, null=False)
     cpf = models.CharField(max_length=14)
-    data_nasc = models.DateField() # DateField possivelmente dando erro.
+    data_nasc = models.DateField()
     bio = models.TextField()
-    usuario = models.OneToOneField(User, on_delete=models.PROTECT)
+    #usuario = models.OneToOneField(User, on_delete=models.PROTECT)
 
     #foto_perfil = models.ImageField()
     def __str__(self):
