@@ -22,7 +22,7 @@ class PerfilUpdate(LoginRequiredMixin, UpdateView):
     model = Perfil
     fields = ['nome', 'bio', 'senha']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
+    success_url = reverse_lazy ('listar-perfil')
 
     
 class PerfilList(LoginRequiredMixin, ListView):

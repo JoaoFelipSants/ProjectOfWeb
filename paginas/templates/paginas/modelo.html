@@ -70,7 +70,7 @@
                     Listas
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% if user.request.is_superuser %}
+                    {% if request.user.is_superuser %}
                     <li><a class="dropdown-item" href="{% url 'listar-perfil' %}">Perfil</a></li>
                     <li><a class="dropdown-item" href="{% url 'listar-noticia' %}">Noticia</a></li>
                     <li><a class="dropdown-item" href="{% url 'listar-categoria' %}">Categoria </a></li>
