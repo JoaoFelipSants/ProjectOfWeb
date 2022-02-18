@@ -1,4 +1,6 @@
+from nntplib import GroupInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
+from braces.views import GroupRequiredMixin
 from pyexpat import model
 from tkinter.ttk import Button
 from .models import Perfil, Categoria, Noticia, Visualizacao, Comentario
@@ -7,10 +9,10 @@ from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 
 
-class PerfilCreate( LoginRequiredMixin, CreateView):
+class PerfilCreate(CreateView):
     login_url = reverse_lazy('login')
     model = Perfil
-    fields = ['nome','cpf', 'data_nasc', 'bio', 'usuario']
+    fields = ['nome', 'cpf', 'data_nasc', 'bio', 'usuario']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
            
@@ -23,54 +25,61 @@ class PerfilUpdate(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy ('listar-perfil') # Redireciona o usuário para "index"
 
     
-class PerfilList(LoginRequiredMixin, ListView):
+class PerfilList(LoginRequiredMixin, GroupRequiredMixin, ListView):
     login_url = reverse_lazy('login')
+    group_required = u"admin"
     model = Perfil
     template_name = 'cadastros/listas/perfil.html'
 
-class PerfilDelete(DeleteView):
+class PerfilDelete(LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
     model = Perfil
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy ('listar-perfil')
 
 
-class CategoriaCreate(LoginRequiredMixin, CreateView):
+class CategoriaCreate(LoginRequiredMixin, GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = u"admin"
     model = Categoria
     fields = ['nome']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('listar-categoria') # Redireciona o usuário para "index"
 
-class CategoriaUpdate(LoginRequiredMixin, UpdateView):
+class CategoriaUpdate(LoginRequiredMixin, GroupRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
+    group_required = u"admin"
     model = Categoria
     fields = ['nome']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('listar-categoria') # Redireciona o usuário para "index"
 
     
-class CategoriaList(LoginRequiredMixin, ListView):
+class CategoriaList(LoginRequiredMixin, GroupRequiredMixin, ListView):
     login_url = reverse_lazy('login')
+    group_required = u"admin"
     model = Categoria
     template_name = 'cadastros/listas/categoria.html'
 
 
-class CategoriaDelete(LoginRequiredMixin, DeleteView):
+class CategoriaDelete(LoginRequiredMixin, GroupRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
+    group_required = u"admin"
     model = Categoria
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy ('listar-categoria')
 
-class NoticiaCreate(LoginRequiredMixin, CreateView):
+class NoticiaCreate(LoginRequiredMixin, GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = u"escritor"
     model = Noticia
     fields = ['titulo', 'tags', 'conteudo', 'vizualizacao', 'categoria']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy ('listar-noticia') # Redireciona o usuário para "index"
 
-class NoticiaUpdate(LoginRequiredMixin, UpdateView):
+class NoticiaUpdate(LoginRequiredMixin, GroupRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
+    group_required = u"escritor"
     model = Noticia
     fields = ['titulo', 'tags', 'conteudo', 'vizualizacao', 'categoria']
     template_name = 'cadastros/form.html'
@@ -83,8 +92,9 @@ class NoticiaList(ListView):
     template_name = 'cadastros/listas/noticia.html'
 
     
-class NoticiaDelete(LoginRequiredMixin, DeleteView):
+class NoticiaDelete(LoginRequiredMixin, GroupRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
+    group_required = u"escritor", u"admin"
     model = Noticia
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy ('listar-noticia')

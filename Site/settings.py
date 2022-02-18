@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'paginas.apps.PaginasConfig',
     'cadastros.apps.CadastrosConfig',
-     'crispy_forms',
-     'crispy_bootstrap5',
-     'usuarios.apps.UsuariosConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'usuarios.apps.UsuariosConfig',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

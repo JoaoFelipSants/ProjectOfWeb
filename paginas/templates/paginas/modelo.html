@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 <html lang="pt-br" class="h-100">
   <head>
@@ -12,20 +13,13 @@
     {% endblock %}
 
     <link rel="shortcut icon" href = "{% static 'img/logo.jpg' %}">
-
-
-    
-
     <!-- Bootstrap core CSS -->
-<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-
-
-
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
     <style>
-        main > .container {
-  padding: 60px 15px 0;
-}
+      main > .container {
+        padding: 60px 15px 0;
+      }
 
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -41,118 +35,107 @@
         }
       }
     </style>
+  </head>
 
-    
-  
-
-</style></head>
   <body class="d-flex flex-column h-100">
-    
-<header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Site de Noticias do IFPR</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'index-2' %}">Inicio</a>
-          </li>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"> <!--NAVBAR SUPERIOR-->
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}">Noticías IFPR - Paranavaí</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Cadastros
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'cadastrar-perfil' %}">Perfil</a></li>
-                <li><a class="dropdown-item" href="{% url 'cadastrar-categoria' %}">Categoria</a></li>
-                <li><a class="dropdown-item" href="{% url 'cadastrar-noticia' %}">Noticia</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Listas
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'listar-perfil' %}">Perfil</a></li>
-              <li><a class="dropdown-item" href="{% url 'listar-noticia' %}">Noticia</a></li>
-              <li><a class="dropdown-item" href="{% url 'listar-categoria' %}">Categoria </a></li>
-              <li>
-                  <hr class="dropdown-divider">
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <form class="d-flex"><input class="form-control me-2" type="search" placeholder="Busque Notícias Aqui"
+                  aria-label="Search"><button class="btn btn-outline-success" type="submit">Buscar</button></form>
+              {% if request.user.is_superuser %}
+              <li class="nav-item"><a class="nav-link" href="{% url 'sobre' %}">Sobre</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">Cadastros</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'cadastrar-perfil' %}">Perfil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar-categoria' %}">Categoria</a></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar-noticia' %}">Noticia</a></li>
+                </ul>
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Usuario
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{% url 'login' %}">Entrar</a></li>
-            <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-    </li>
 
-      <li class="nav-item">
-          <a class="nav-link" href="{% url 'sobre' %}">Sobre</a>
-          </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Listas
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'listar-perfil' %}">Perfil</a></li>
+                    <li><a class="dropdown-item" href="{% url 'listar-noticia' %}">Noticia</a></li>
+                    <li><a class="dropdown-item" href="{% url 'listar-categoria' %}">Categoria </a></li>
+                </ul>
+              </li>
+              {% endif %}
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <span id="username">Usuário</span></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Meu Perfil</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+                </ul> 
+              </li>
+              {% else %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <span id="username">Usuário</span></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'login' %}">Entrar</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'cadastrar-perfil' %}">Cadastrar-se</a></li>
+                </ul>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
+  <!-- Begin page content -->
+  <main class="flex-shrink-0">
+    <div class="container">
 
-<!-- Begin page content -->
-<main class="flex-shrink-0">
-  <div class="container">
+      {% block conteudo %}
 
-    {% block conteudo %}
+      <h1 class="mt-5">Noticias do IFPR</h1>
+      <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code class="small">padding-top: 60px;</code> on the <code class="small">main &gt; .container</code>.</p>
+      <p>Back to <a href="/docs/5.1/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>
+    
+      {% endblock %}
 
-    <h1 class="mt-5">Noticias do IFPR</h1>
-    <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code class="small">padding-top: 60px;</code> on the <code class="small">main &gt; .container</code>.</p>
-    <p>Back to <a href="/docs/5.1/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>
-  
-    {% endblock %}
-
-</div>
-</main>
-
-<footer class="footer mt-auto py-3 bg-dark">
-  <div class="container">
-    <span class="text-muted">
-
-        {% block rodape %}
-        Projeto de noticias do IFPR <br>
-        Projeto desenvolvido por Barbara Barbarelli, Iago Meira e Joao Felipe
-        {% endblock %}
-    </span>
   </div>
-</footer>
+  </main>
 
-    <script src="{% static 'javascript/jquery-3.6.0.js' %}"></script>
-    <script src="{% static 'javascript/bootstrap.js' %}"></script>
+  <footer class="footer mt-auto py-3 bg-dark">
+    <div class="container">
+      <span class="text-muted">
 
-      
-  </body>
+          {% block rodape %}
+          Projeto de noticias do IFPR <br>
+          Projeto desenvolvido por Barbara Barbarelli, Iago Meira e Joao Felipe
+          {% endblock %}
+      </span>
+    </div>
+  </footer>
+
+      <script src="{% static 'javascript/jquery-3.6.0.js' %}"></script>
+      <script src="{% static 'javascript/bootstrap.js' %}"></script>
+
+        
+    </body>
 </html>
